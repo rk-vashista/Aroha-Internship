@@ -21,6 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
         displayResult(bmi, category);
     });
 
+    const resetButton = document.getElementById('reset');
+
+    resetButton.addEventListener('click', () => {
+        heightInput.value = '';
+        weightInput.value = '';
+        resultDiv.classList.remove('show');
+        setTimeout(() => {
+            resultDiv.classList.add('hidden');
+            bmiValueSpan.textContent = '';
+            bmiCategoryP.textContent = '';
+        }, 500);
+    });
+
     function calculateBMI(height, weight) {
         const heightInMeters = height / 100;
         return (weight / (heightInMeters * heightInMeters)).toFixed(1);
